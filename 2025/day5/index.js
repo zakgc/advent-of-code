@@ -36,3 +36,22 @@ for (const id of ingredientsData.ids) {
 }
 
 console.log(noFresh);
+
+// part 2
+
+let freshIds = []
+for (const range of ingredientsData.ranges) {
+    let ends = range.split('-')
+    let lowEnd = Number(ends[0])
+    let highEnd = Number(ends[1])
+    
+    for (let i = lowEnd; i < highEnd; i++) {
+        let index = freshIds.indexOf(i)
+        
+        if (index === -1) {
+            freshIds.push(i)
+        }
+    }
+}
+
+console.log(freshIds.length);
