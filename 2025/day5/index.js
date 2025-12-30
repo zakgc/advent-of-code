@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-let inputTxt = fs.readFileSync('./testinput.txt', 'utf-8').replaceAll('\r', '')
+let inputTxt = fs.readFileSync('./input.txt', 'utf-8').replaceAll('\r', '')
 let input = inputTxt.split('\n')
 let ingredientsData = {
     ranges: [],
@@ -15,10 +15,23 @@ input.forEach(i => {
     }
 
     if (rangesDone) {
-        ingredientsData.ids.push(i)
+        ingredientsData.ids.push(Number(i))
     } else {
         ingredientsData.ranges.push(i)
     }
 })
 
-console.log(ingredientsData);
+let noFresh = 0
+for (const id of ingredientsData.ids) {
+    for (const range of ingredientsData.ranges) {
+        let ends = range.split('-')
+        let lowEnd = Number(ends[0])
+        let highEnd = Number(ends[1])
+        
+        if (lowEnd < id && id < highEnd) {
+            noFresh ++
+        }
+    }
+}
+
+console.log(noFresh);
