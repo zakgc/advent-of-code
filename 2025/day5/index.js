@@ -55,3 +55,5 @@ for (const range of ingredientsData.ranges) {
 }
 
 console.log(freshIds.length);
+
+// solution couldn't handle the size of the data
