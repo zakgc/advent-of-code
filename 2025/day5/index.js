@@ -30,6 +30,7 @@ for (const id of ingredientsData.ids) {
         
         if (lowEnd < id && id < highEnd) {
             noFresh ++
+            break
         }
     }
 }
